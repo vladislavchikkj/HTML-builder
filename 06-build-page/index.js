@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const qwe = path.join(__dirname, 'project-dist');
+const qwe = path.join(__dirname, 'project-dist/');
 
-fs.mkdir(path.join(__dirname, 'project-dist'), { recursive: true }, err => {
+fs.mkdir(path.join(__dirname, 'project-dist/'), { recursive: true }, err => {
     if (err) throw err;
   });
   //function for inserting page components
 async function insert(tempChunk) {
     const tempTags = tempChunk.match(/{{[^{}]+}}/g);
-    const src = path.join(__dirname, 'components');
+    const src = path.join(__dirname, 'components/');
     for (const tempTag of tempTags) {
     const readStream = fs.createReadStream(src + tempTag.slice(2, -2) + '.html', 'utf-8');
     for await (const chunk of readStream) {
